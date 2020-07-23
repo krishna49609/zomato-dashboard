@@ -1,0 +1,27 @@
+<div class="layout-row" >
+    <div class="layout-row restaurant-image">
+      <img src={{restaurant.thumb}} alt={{restaurant.name}}>         
+    </div>
+    <div class="layout-column restaurant-details">
+       <div class="layout-column detail">
+         <b>{{restaurant.name}}</b>         
+         <label>{{restaurant.location.address}}</label>
+       </div>
+
+       <div class="layout-column detail">
+          <small><b>CUISINES</b></small>
+          <label>{{restaurant.cuisines}}</label>
+       </div>
+
+       <div class="layout-column detail">
+          <small><b>PHONE NUMBERS</b></small>
+          <label>{{restaurant.phone_numbers}}</label>
+       </div>
+
+       <div class="layout-column detail">
+          <small><b>OPENING HOURS</b></small>
+          <label>{{restaurant.timings}}</label>
+       </div>       
+       
+    </div>
+</div>

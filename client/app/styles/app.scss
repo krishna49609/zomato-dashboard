@@ -1,10 +1,129 @@
 @import 'ember-paper';
 
-
-.main-view {
-  max-height: 50rem;
-  height: 100%;
-  max-width: 70rem;
-  padding: 5%;  
+body {
+  background-color: lightgray;
 }
 
+.main-view {    
+  max-width: 70rem;
+  padding: 2% 5% 5% 5%;
+  margin: auto;
+
+  .heading {
+    font-size: small;  
+  }
+  .md-checkbox {
+    font-size: small
+  }
+
+  /* Override default CSS for the sliders*/
+  .noUi-base, .noUi-connects {
+    min-width: 20rem;
+  }  
+  .noUi-handle {
+    border-radius: 10px;
+    border: 1px solid #3FB8AF;
+  }
+  .noUi-handle:after, .noUi-handle:before {
+    content:none;
+  }
+  .noUi-handle:focus, .noUi-origin:focus .noUi-handle-lower:focus {
+    outline: none;
+  }
+  .noUi-horizontal .noUi-handle {
+    width: 18px;
+    height: 18px;
+    right: -17px;
+    top: -6px
+  }
+  .noUi-target {
+    max-height: 8px;
+  }
+}
+
+.restaurant-summary {  
+  background-color: whitesmoke;
+  padding: 1rem;
+  width:100%;
+  .restaurant-image img {
+    min-height: 20rem;
+  }
+}
+
+.results {  
+  min-height: 35rem;
+}
+
+.result-list {
+  min-width: 22rem;
+  background-color: whitesmoke;
+  padding-right: 1rem;
+  .result-list-items {
+    max-height: 30rem;
+    overflow-y: auto;
+    padding-right:0.5rem;
+  }  
+  md-list-item {
+    border-bottom: solid 1px lightgray;
+    font-size: 1.2rem;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }  
+  ::-webkit-scrollbar-track {
+    background: lightgray;
+    border-radius: 0.5rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: gray; 
+    border-radius: 1rem;
+  }  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+}
+
+.selctedListItem {
+  background-color: #3FB8AF;
+  color:white;
+}
+
+.rating-slider .noUi-base{
+  width: 20rem;
+}
+
+.slider-labels {
+  padding: 0.5rem 0;
+  font-size: small;
+}
+
+.restaurant-details {
+  min-width: 20rem;
+  margin-left: 2rem;
+  
+  .detail:not(:first-child) {
+    margin: 1rem 0 0 0;
+  }
+}
+
+.category {  
+  .category-items {
+    flex-wrap: wrap;    
+    width:5rem;
+  }
+  .md-checkbox {
+    min-width: 10rem;
+  }
+}
+
+.cuisine {
+  margin-left: 4rem;
+  .cuisine-items {
+    flex-wrap: wrap;
+    width: 35rem;
+    max-height: 5rem;
+  }
+  .md-checkbox {
+    min-width: 10rem;
+  }
+}
