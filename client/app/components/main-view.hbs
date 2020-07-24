@@ -1,80 +1,93 @@
 <div class="main-view">
   <div>
-    <PaperCard>  
+    <PaperCard>
       <PaperCardContent>
         <div class="layout-row main-filters">
           <div class="layout-column category">
               <h3 class="heading"> CATEGORY </h3>
               <div class="category-items">
-                {{#each this.categories as |category|}}
-                  <PaperCheckbox @value={{category.selected}} @onChange={{action (mut category.selected)}}>
+                {{#each this.categories as |category index|}}
+                  <PaperCheckbox @value={{category.selected}} @onChange={{action this.selectCategory index}}>
                     {{category.name}}
                   </PaperCheckbox>
-                {{/each}}              
-              </div>              
+                {{/each}}
+              </div>
           </div>
           <div class="layout-column cuisine">
               <h3 class="heading"> CUISINE </h3>
               <div class="cuisine-items">
-                {{#each this.cuisines as |cuisine|}}
-                  <PaperCheckbox @value={{cuisine.selected}} @onChange={{action (mut cuisine.selected)}}>
+                {{#each this.cuisines as |cuisine index|}}
+                  <PaperCheckbox @value={{cuisine.selected}} @onChange={{action this.selectCuisine index}}>
                     {{cuisine.cuisine_name}}
                   </PaperCheckbox>
-                {{/each}}              
-              </div>              
+                {{/each}}
+              </div>
           </div>
-          <div class="layout-column rating-cost-sliders">              
+          <div class="layout-column rating-cost-sliders">
               <div class="layout-column">
                 <h3 class="heading">RATING</h3>
-                <div class="layout-row">                  
+                <!-- Dual range slider to filter current results based on rating-->
+                <div class="layout-row">
                   {{range-slider start=ratingValues
                    step=0.1
                    range=this.ratingRange
                    connect=true
-                   on-change="ratingSliderChange"}}                 
+                   on-change="ratingSliderChange"}}
                 </div>
                 <div class="layout-row layout-align-space-between-center slider-labels">
-                  <b>{{this.selectedRatingRange.min}}</b> 
-                  <b>{{this.selectedRatingRange.max}}</b> 
+                  <b>{{this.selectedRatingRange.min}}</b>
+                  <b>{{this.selectedRatingRange.max}}</b>
                 </div>
                 <h3 class="heading">COST</h3>
-                <div class="layout-row">                  
-                  {{range-slider start=costValues                   
-                   step=50
+                <!-- Dual range slider to filter current results based on average cost for 2-->
+                <div class="layout-row">
+                  {{range-slider start=costValues
+                   step=10
                    range=this.costRange
                    connect=true
-                   on-change="costSliderChange"}}                 
+                   on-change="costSliderChange"}}
                 </div>
                 <div class="layout-row layout-align-space-between-center slider-labels">
-                  <b>{{concat this.selectedCostRange.min "$" }}</b>  
+                  <b>{{concat this.selectedCostRange.min "$"}}</b>
                   <b>{{concat this.selectedCostRange.max "$"}}</b>
-                </div> 
-              </div>              
+                </div>
+              </div>
           </div>
-        </div>                         
+        </div>
       </PaperCardContent>
     </PaperCard>
 
-    <PaperCard>  
+    <PaperCard>
       <PaperCardContent>
         <div class="layout-row results">
+          <!-- Renderes restaurant names in a list-->
           <div class="layout-column result-list">
-              <h3 class="heading"> RESULTS ({{this.results.length}})</h3>
+              <h3 class="heading"> RESULTS ({{this.resultsList.length}})</h3>
               <div class="layout-column result-list-items">
-                {{#each results as |result|}}                  
-                  <PaperItem 
+                {{#if (eq this.results.length 0)}}
+                  {{#each (loop-for 10)}}
+                    {{#content-placeholders as |placeholder|}}
+                      {{placeholder.text lines=3 line-height=32}}
+                    {{/content-placeholders}}
+                  {{/each}}
+                {{/if}}
+                {{#each this.resultsList as |result|}}
+                  <PaperItem
                   @class="{{if (eq this.selectedRestaurant result) "selctedListItem" ""}}"
-                  @onClick={{action this.showRestaurantDetail result}} as |controls|> 
-                    <p>{{result.name}}</p>                  
+                  @onClick={{action this.showRestaurantDetail result}} as |controls|>
+                    <p>{{result.name}}</p>
                   </PaperItem>
                 {{/each}}
-              </div>              
+              </div>
           </div>
+           <!-- Shows details of a restaurant-->
            <div class="layout-column restaurant-summary">
-              <RestaurantDetail/>
-          </div>          
-        </div>                         
+             {{#if this.selectedRestaurant}}
+              <RestaurantDetail @restaurant={{this.selectedRestaurant}}/>
+             {{/if}}
+          </div>
+        </div>                       
       </PaperCardContent>
-    </PaperCard>  
+    </PaperCard>
   </div>
 </div>

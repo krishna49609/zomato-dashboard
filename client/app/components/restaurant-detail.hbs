@@ -1,27 +1,39 @@
 <div class="layout-row" >
     <div class="layout-row restaurant-image">
-      <img src={{restaurant.thumb}} alt={{restaurant.name}}>         
+    <img src={{@restaurant.thumb}} alt={{@restaurant.name}}>      
     </div>
     <div class="layout-column restaurant-details">
-       <div class="layout-column detail">
-         <b>{{restaurant.name}}</b>         
-         <label>{{restaurant.location.address}}</label>
-       </div>
-
-       <div class="layout-column detail">
-          <small><b>CUISINES</b></small>
-          <label>{{restaurant.cuisines}}</label>
-       </div>
-
-       <div class="layout-column detail">
-          <small><b>PHONE NUMBERS</b></small>
-          <label>{{restaurant.phone_numbers}}</label>
-       </div>
-
-       <div class="layout-column detail">
-          <small><b>OPENING HOURS</b></small>
-          <label>{{restaurant.timings}}</label>
-       </div>       
-       
+    <div class="layout-column detail">
+        <b class="restaurant-name">{{@restaurant.name}}</b>  
+        <label>{{@restaurant.location.address}}</label>
     </div>
+    <div class="layout-column detail delivery-booking">
+        <div class="layout-row layout-align-space-between-center status">
+         {{#if (eq @restaurant.has_online_delivery 1)}}
+            {{paper-icon "check" class="green-icon" size=26}}  <label>Delivery available</label>
+         {{else}}
+            {{paper-icon "close" class="red-icon" size=26}}  <label>No delivery</label>
+         {{/if}}
+       </div>
+       <div class="layout-row layout-align-space-between-center status">
+         {{#if (eq @restaurant.has_table_booking 1) }}
+            {{paper-icon "check" class="green-icon" size=26}}  <label>Bookings available</label>      
+         {{else}}
+            {{paper-icon "close" class="red-icon" size=26}}  <label>No booking</label>
+         {{/if}}
+       </div>
+    </div>
+    <div class="layout-column detail">
+        <small><b>CUISINES</b></small>
+        <label>{{@restaurant.cuisines}}</label>
+    </div>
+    <div class="layout-column detail">
+        <small><b>PHONE NUMBER</b></small>
+        <label>{{@restaurant.phone_numbers}}</label>
+    </div>
+    <div class="layout-column detail">
+        <small><b>OPENING HOURS</b></small>
+        <label>{{@restaurant.timings}}</label>
+    </div>              
+    </div>    
 </div>

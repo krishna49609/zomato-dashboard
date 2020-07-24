@@ -60,5 +60,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "ember-content-placeholders": "^1.0.0"
   }
 }
