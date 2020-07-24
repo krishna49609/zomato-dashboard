@@ -1,2 +1,2 @@
 # zomato-dashboard
-A dashboard to search restaurants using Zomato API
+A dashboard to search restaurants using Zomato API in Adelaide
