@@ -70,6 +70,7 @@ export default class MainViewComponent extends Component {
   }
 
   fetchCuisines() {
+    //Gets all the available cuisines
     this.api.getCuisines(this.selectedCityId)
     .then(response =>  response.json())
     .then(results => {
@@ -83,6 +84,7 @@ export default class MainViewComponent extends Component {
   }
 
   fetchCategories() {
+    //Gets all the available categories
     this.api.getCategories()
     .then(response =>  response.json())
     .then(results => {
@@ -118,7 +120,7 @@ export default class MainViewComponent extends Component {
   }
 
   getRestaurantsInTheCity() {
-    // Set the maximum result count to 0 since there is no pagination in the mockup.
+    // fetch first 20 results since there is no pagination in the mockup.
     let start = 0, count = 20;
     this.api.getRestaurants(this.selectedCityId,start,count)
     .then(response => response.json())
@@ -143,21 +145,28 @@ export default class MainViewComponent extends Component {
 
   @action
   selectCuisine(index,value) {
+    //Sets the cuisine checkbox value to true/false
     set(this.cuisines[index],constants.SELECTED,value);
+    //Based on the current selection of cusinines and categories fetch restaurants in Adelaide(First 20)
     this.getRestaurantsByCategoryAndCuisine();
   }
 
   @action
   selectCategory(index,value) {
+    //Sets the categoy checkbox value to true/false
     set(this.categories[index],constants.SELECTED,value);
+    //Based on the current selection of cusinines and categories fetch restaurants in Adelaide(First 20)
     this.getRestaurantsByCategoryAndCuisine();
   }
 
+  @action
   costSliderChange(value) {
     this.selectedCostRange = {[constants.MINIMUM]:value[0],[constants.MAXIMUM]:value[1]};
     this.applyRatingAndCostFilters();
   }
-  applyRatingAndCostFilters() {
+
+ //Filters current results based on selected cost and rating range.
+  applyRatingAndCostFilters() {   
     this.resultsList = this.results.filter(result => {
       return (
         this.selectedCostRange.min <= result.average_cost_for_two

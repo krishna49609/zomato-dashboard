@@ -10,16 +10,24 @@
     <div class="layout-column detail delivery-booking">
         <div class="layout-row layout-align-space-between-center status">
          {{#if (eq @restaurant.has_online_delivery 1)}}
-            {{paper-icon "check" class="green-icon" size=26}}  <label>Delivery available</label>
+            <div class="available">
+              {{paper-icon "check" class="green-icon" size=26}}  <label>Delivery available</label>
+            </div>
          {{else}}
-            {{paper-icon "close" class="red-icon" size=26}}  <label>No delivery</label>
+            <div class="not-available">
+              {{paper-icon "close" class="red-icon" size=26}}  <label>No delivery</label>
+            </div>
          {{/if}}
        </div>
        <div class="layout-row layout-align-space-between-center status">
          {{#if (eq @restaurant.has_table_booking 1) }}
-            {{paper-icon "check" class="green-icon" size=26}}  <label>Bookings available</label>      
+            <div class="available">
+              {{paper-icon "check" class="green-icon" size=26}}  <label>Bookings available</label>  
+            </div>       
          {{else}}
-            {{paper-icon "close" class="red-icon" size=26}}  <label>No booking</label>
+            <div class="not-available">
+              {{paper-icon "close" class="red-icon" size=26}}  <label>No bookings</label>
+            </div>
          {{/if}}
        </div>
     </div>

@@ -52,122 +52,132 @@ body {
   .noUi-target {
     max-height: 8px;
   }
-}
-
-.restaurant-summary {  
-  background-color: $component-bg-color;
-  padding: 2rem 1rem 1rem 1rem;
-  width:100%;
-  .restaurant-image img {
-    min-height: 20rem;
-  }
-  .restaurant-name {
-    font-size: 1.5rem;
-  }
-}
-
-.results {  
-  min-height: 35rem;
-}
-
-.result-list {
   
-  min-width: 22rem;
-  background-color: $component-bg-color;
-  padding-right: 1rem;
-  
-  .result-list-items {
-    max-height: 30rem;
-    overflow-y: auto;
-    padding-right:0.5rem;
-  }  
-
-  .selctedListItem {
-    background-color: $highlighted-restaurant-color;
-    color:$highlighted-restaurant-font-color;
+  .main-filters {
+    .category {
+      .category-items {
+        flex-wrap: wrap;
+        width:5rem;
+      }    
+    }
+    .cuisine {
+      margin: 0 10% 0 8%;
+      .cuisine-items {
+        flex-wrap: wrap;
+        width: 35rem;
+        max-height: 5rem;
+      }
+    }
+    .md-checkbox {
+      min-width: 10rem;
+    }
+  }
+  .rating-slider .noUi-base {
+    width: 20rem;
+  }
+  .slider-labels {
+    padding: 0.5rem 0;
+    font-size: small;
   }
 
-  md-list-item {
-    border-bottom: solid 1px $scroll-track-color;
-    font-size: 1.2rem;
-  }
-
-  ::-webkit-scrollbar {
-    width: 10px;
-  }  
-  ::-webkit-scrollbar-track {
-    background: $scroll-track-color;
-    border-radius: 0.5rem;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: $scroll-thumb-color; 
-    border-radius: 1rem;
-  }  
-  ::-webkit-scrollbar-thumb:hover {
-    background: $scroll-thumb-hover; 
+  .results {  
+    min-height: 35rem;
   }
   
-}
-
-.rating-slider .noUi-base {
-  width: 20rem;
-}
-.slider-labels {
-  padding: 0.5rem 0;
-  font-size: small;
-}
-
-.restaurant-details {
-  min-width: 20rem;
-  margin-left: 2rem;
-  label {
-    color: dimgray;
+  .result-list {
+    min-width: 22rem;
+    background-color: $component-bg-color;
+    padding-right: 1rem;
+    
+    .result-list-items {
+      max-height: 30rem;
+      overflow-y: auto;
+      padding-right:0.5rem;
+    }  
+  
+    .selctedListItem {
+      background-color: $highlighted-restaurant-color;
+      color:$highlighted-restaurant-font-color;
+    }
+  
+    md-list-item {
+      border-bottom: solid 1px $scroll-track-color;
+      font-size: 1.2rem;
+    }
+  
+    ::-webkit-scrollbar {
+      width: 10px;
+    }  
+    ::-webkit-scrollbar-track {
+      background: $scroll-track-color;
+      border-radius: 0.5rem;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: $scroll-thumb-color; 
+      border-radius: 1rem;
+    }  
+    ::-webkit-scrollbar-thumb:hover {
+      background: $scroll-thumb-hover; 
+    }
+    
   }
-  .detail:not(:first-child) {
-    margin: 1.5rem 0 0 0;    
+  
+  .restaurant-details {
+    min-width: 20rem;
+    margin-left: 2rem;
     label {
-      font-size: 18px;      
+      color: dimgray;
     }
-  }
-
-  .layout-column.detail.delivery-booking{
-    font-size: 2rem !important;
-    margin: 1rem 0 0rem 0;
-  }
-
-  div.status {
-    max-width: 8rem;
-    font-size: 2rem;
-    align-items: center;
-    .green-icon {
-      color:$tick-icon-color;
+    .detail:not(:first-child) {
+      margin: 1.5rem 0 0 0;    
+      label {
+        font-size: 18px;      
+      }
     }
-    .red-icon {
-      color:$cross-icon-color;
+  
+    .layout-column.detail.delivery-booking{
+      font-size: 2rem !important;
+      margin: 1rem 0 0rem 0;
     }
-    .status label {
+  
+    div.status {
       font-size: 2rem;
+      align-items: center;
+      
+      div.not-available {
+        max-width: 8.5rem;
+      }
+      div.available {
+        max-width: 12rem;
+      }
+      .green-icon {
+        margin-left:-2px;
+        color:$tick-icon-color;
+      }
+      .red-icon {
+        margin-left:-2px;
+        color:$cross-icon-color;
+      }
+      .status label {
+        font-size: 2rem;
+      }
+    }
+  }
+  .restaurant-summary {  
+    background-color: $component-bg-color;
+    padding: 2rem 1rem 1rem 1rem;
+    width:100%;
+    .restaurant-image img {
+      min-height: 20rem;
+    }
+    .restaurant-name {
+      font-size: 1.5rem;
     }
   }
 }
 
-.main-filters {
-  .category {
-    .category-items {
-      flex-wrap: wrap;
-      width:5rem;
-    }    
-  }
-  .cuisine {
-    margin: 0 10% 0 8%;
-    .cuisine-items {
-      flex-wrap: wrap;
-      width: 35rem;
-      max-height: 5rem;
-    }
-  }
-  .md-checkbox {
-    min-width: 10rem;
-  }
-}
+
+
+
+
 

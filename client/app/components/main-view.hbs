@@ -4,24 +4,26 @@
       <PaperCardContent>
         <div class="layout-row main-filters">
           <div class="layout-column category">
-              <h3 class="heading"> CATEGORY </h3>
-              <div class="category-items">
-                {{#each this.categories as |category index|}}
-                  <PaperCheckbox @value={{category.selected}} @onChange={{action this.selectCategory index}}>
-                    {{category.name}}
-                  </PaperCheckbox>
-                {{/each}}
-              </div>
+            <h3 class="heading"> CATEGORY </h3>
+            <!-- Renders categories as checkboxes-->
+            <div class="category-items">
+              {{#each this.categories as |category index|}}
+                <PaperCheckbox @value={{category.selected}} @onChange={{action this.selectCategory index}}>
+                  {{category.name}}
+                </PaperCheckbox>
+              {{/each}}
+            </div>
           </div>
           <div class="layout-column cuisine">
-              <h3 class="heading"> CUISINE </h3>
-              <div class="cuisine-items">
-                {{#each this.cuisines as |cuisine index|}}
-                  <PaperCheckbox @value={{cuisine.selected}} @onChange={{action this.selectCuisine index}}>
-                    {{cuisine.cuisine_name}}
-                  </PaperCheckbox>
-                {{/each}}
-              </div>
+            <h3 class="heading"> CUISINE </h3>
+            <!-- Renders cuisines as checkboxes-->
+            <div class="cuisine-items">
+              {{#each this.cuisines as |cuisine index|}}
+                <PaperCheckbox @value={{cuisine.selected}} @onChange={{action this.selectCuisine index}}>
+                  {{cuisine.cuisine_name}}
+                </PaperCheckbox>
+              {{/each}}
+            </div>
           </div>
           <div class="layout-column rating-cost-sliders">
               <div class="layout-column">
@@ -80,7 +82,7 @@
                 {{/each}}
               </div>
           </div>
-           <!-- Shows details of a restaurant-->
+           <!-- Shows details of the selected restaurant-->
            <div class="layout-column restaurant-summary">
              {{#if this.selectedRestaurant}}
               <RestaurantDetail @restaurant={{this.selectedRestaurant}}/>
