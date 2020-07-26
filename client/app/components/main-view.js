@@ -70,7 +70,7 @@ export default class MainViewComponent extends Component {
   }
 
   fetchCuisines() {
-    //Gets all the available cuisines
+    //Gets all the available cuisines in the city
     this.api.getCuisines(this.selectedCityId)
     .then(response =>  response.json())
     .then(results => {
@@ -102,8 +102,8 @@ export default class MainViewComponent extends Component {
   getRestaurantsByCategoryAndCuisine() {    
     /*Zomato-API sends 20 results at a time. Since there is no pagination for now,
     will fetch maximum 20 results that fit to the selected category and cuisines.*/
-    let queryCuisines = this.cuisines.filter(c => c.selected===true).map(c=>c.cuisine_id).join("%2C");
-    let queryCategories = this.categories.filter(c => c.selected === true).map(c => c.id).join("%2C");
+    let queryCuisines = this.cuisines.filter(c => c.selected===true).map(c=>c.cuisine_id);
+    let queryCategories = this.categories.filter(c => c.selected === true).map(c => c.id);
     let cityId = this.selectedCityId;
     this.results = [];
     this.resultsList = [];
@@ -125,6 +125,9 @@ export default class MainViewComponent extends Component {
     this.api.getRestaurants(this.selectedCityId,start,count)
     .then(response => response.json())
     .then(results => {
+      if(!results.restaurants) {
+        throw new Error("Failed to fetch restaurants data");
+      }
       this.results = results.restaurants.map(r=>r.restaurant);
       this.resultsList = this.results;
       console.log(this.results);
@@ -135,12 +138,6 @@ export default class MainViewComponent extends Component {
   @action
   showRestaurantDetail(value) {
     this.selectedRestaurant = value;
-  }
-
-  @action
-  ratingSliderChange(value) {
-    this.selectedRatingRange = {[constants.MINIMUM]:value[0],[constants.MAXIMUM]:value[1]};
-    this.applyRatingAndCostFilters();
   }
 
   @action
@@ -157,6 +154,12 @@ export default class MainViewComponent extends Component {
     set(this.categories[index],constants.SELECTED,value);
     //Based on the current selection of cusinines and categories fetch restaurants in Adelaide(First 20)
     this.getRestaurantsByCategoryAndCuisine();
+  }
+
+  @action
+  ratingSliderChange(value) {
+    this.selectedRatingRange = {[constants.MINIMUM]:value[0],[constants.MAXIMUM]:value[1]};
+    this.applyRatingAndCostFilters();
   }
 
   @action

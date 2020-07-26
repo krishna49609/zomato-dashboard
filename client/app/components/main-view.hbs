@@ -76,7 +76,7 @@
                 {{#each this.resultsList as |result|}}
                   <PaperItem
                   @class="{{if (eq this.selectedRestaurant result) "selctedListItem" ""}}"
-                  @onClick={{action this.showRestaurantDetail result}} as |controls|>
+                  @onClick={{action this.showRestaurantDetail result}}>
                     <p>{{result.name}}</p>
                   </PaperItem>
                 {{/each}}
