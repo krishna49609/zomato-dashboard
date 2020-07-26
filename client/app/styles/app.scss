@@ -167,8 +167,9 @@ body {
     background-color: $component-bg-color;
     padding: 2rem 1rem 1rem 1rem;
     width:100%;
-    .restaurant-image img {
+    div.restaurant-image , .restaurant-image img{
       min-height: 20rem;
+      max-height: 20rem;
     }
     .restaurant-name {
       font-size: 1.5rem;
