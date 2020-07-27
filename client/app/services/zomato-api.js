@@ -3,7 +3,7 @@ import Service from '@ember/service';
 export default class ZomatoApiService extends Service {
 
   endPoint = "http://zm-mn.us-east-2.elasticbeanstalk.com/";
-  //endPoint = "http://localhost:3000/";
+  //endPoint = "http://localhost:3000/"; If running server locally.
   defaultCityId = "297"; //Adelaide
 
   constructor() {
